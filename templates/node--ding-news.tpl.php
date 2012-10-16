@@ -87,19 +87,20 @@
  */
 ?>
 <div class="image-container">
-  <?php print render($content['field_ding_news_title_image'][0]); ?>
-</div>    
+  <?php print render($content['field_ding_news_title_image']); ?>
+  <?php print render($content['field_ding_news_list_image']); ?>
+</div>
 <div class="super-heading">
   <p>
     <?php print render($content['field_ding_news_category']); ?>
-    <?php print render($content['field_ding_news_library'][0]); ?>
+    <?php print render($content['field_ding_news_library']); ?>
   </p>
 </div>
 <h2 class="heading"><?php print $title; ?></h2>
   <div class="grid-row">
   <div class="lead">
     <p>
-      <?php print render($content['field_ding_news_lead'][0]); ?>
+      <?php print render($content['field_ding_news_lead']); ?>
     </p>
   </div>
 </div>
@@ -110,7 +111,7 @@
 <?php
   // hide fields we have already rendered
   hide($content['field_ding_news_title_image']);
-    hide($content['field_ding_news_list_image']);
+  hide($content['field_ding_news_list_image']);
   hide($content['field_ding_news_category']);
   hide($content['field_ding_news_library']);
   hide($content['field_ding_news_lead']);
@@ -153,10 +154,14 @@
               <i class="icon-time"></i>
               <?php print $submitted; ?> • <?php print $ddbasic_updated; ?>
               <br>
-              <i class="icon-tag"></i>
-              <?php print $ddbasic_ding_news_tags; ?>
+              <?php if ($ddbasic_ding_news_tags): ?>
+                  <span class="tags">
+                      <i class="icon-tag"></i>
+                      <?php print t('Tags: ') . $ddbasic_ding_news_tags; ?>
+                  </span>
+              <?php endif; ?>
           </p>
       </div>
   </div>
-    
+
 <?php endif; ?>
