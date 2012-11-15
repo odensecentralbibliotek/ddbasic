@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Latto's theme implementation to display page nodes.
+ * Latto theme's implementation to display a node.
  *
  * Available variables:
  * - $title: the (sanitized) title of the node.
@@ -16,8 +16,8 @@
  * - $name: Themed username of node author output from theme_username().
  * - $node_url: Direct url of the current node.
  * - $display_submitted: Whether submission information should be displayed.
- * - $submitted: Submission information created from $date
- *  (NOTE: modified for latto during latto_preprocess_node in templates.php)
+ * - $submitted: Submission information created from $name and $date during
+ *   template_preprocess_node().
  * - $classes: String of classes that can be used to style contextually through
  *   CSS. It can be manipulated through the variable $classes_array from
  *   preprocess functions. The default values can be one or more of the
@@ -73,90 +73,26 @@
  * language, e.g. $node->body['en'], thus overriding any language negotiation
  * rule that was previously applied.
  *
- * Latto specific variables:
- * - $latto_updated: Information about latest update on the node created
- *  from $date during latto_preprocess_node().
- * - $latto_ding_content_tags: Tags, as a comma-separated list of
- *  links with leading text "Tags: " as relevant for the event node
- * - $latto_byline: outputs byline to be used before $name
- *
  * @see template_preprocess()
  * @see template_preprocess_node()
  * @see template_process()
  */
 ?>
-<section class="span7" role="main">
-  <?php  if ($page) : ?>
-  <article>
-    <?php print render($content['field_ding_page_titel_image'][0]); ?>
- <hr/>
-    <header class="page-header">
-       <h1><?php print $title; ?></h1>
-        <div class="row-fluid">
-            <div class="lead span8">
-                <p><?php print render($content['field_ding_page_lead'][0]); ?></p>
-            </div>
-        </div>
-    </header>
-  </article>
- <?php endif; ?>
- 
-  <?php  if ($teaser) : ?>
-       <h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
-        <div class="row-fluid">
-            <div class="lead span8">
-                <p><?php print render($content['field_ding_page_lead'][0]); ?></p>
-            </div>
-        </div>
-  <?php endif; ?>
+<?php
+  // Hide elements so we can render them later.
+  hide($content['comments']);
+  hide($content['links']);
+?>
 
-    <?php
-      // Hide fields we have already rendered.
-      hide($content['field_ding_page_titel_image']);
-      hide($content['field_ding_page_lead']);
-      // Hide fields that will be displayed as panel panes instead.
-      hide($content['comments']);
-      // Hide fields now so that we can render them later.
-      hide($content['links']);
-      hide($content['field_ding_page_tags']);
-      print render($content);
-    ?>
-
-  <hr />
-
-  <?php
-    // Remove the "Add new comment" link on the teaser page or if the comment
-    // form is being displayed on the same page.
-    if ($teaser || !empty($content['comments']['comment_form'])) :
-      unset($content['links']['comment']['#links']['comment-add']);
-    endif;
-    // Only display the wrapper div if there are links.
-    $links = render($content['links']);
-    if ($links):
-  ?>
-    <div class="link-wrapper">
-      <?php print $links; ?>
+<div class="<?php print $classes; ?>">
+  <h1 class="page-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
+  <div class="content"<?php print $content_attributes; ?>>
+    <div class="libraries"><?php print render($content); ?></div>
+    <?php if (!empty($opening_hours)) : ?>
+    <div class="libraries-opening-hours">
+    <?php print $opening_hours;  ?>
     </div>
-  <?php endif; ?>
-<?php  if ($page) : ?>
-  <?php if ($display_submitted): ?>
-    <footer class="row-fluid">
-        <?php print $user_picture; ?>
-        <div class="span10">
-            <h4>
-                <?php print $latto_byline; ?>
-                <?php print $name; ?>
-            </h4>
-            <p>
-                <i class="icon-time"></i>
-                <?php print $submitted; ?> • <?php print $latto_updated; ?>
-                <br />
-                <i class="icon-tag"></i>
-                <?php print $latto_ding_content_tags; ?>
-            </p>
-        </div>
-    </footer>
-
-  <?php endif; ?>
-<?php endif; ?>
-</section>
+    <?php endif; ?>
+  </div>
+</div>
+<hr />
