@@ -83,19 +83,16 @@
   hide($content['comments']);
   hide($content['links']);
 ?>
-<?php if(!$teaser): ?>
+
 <div class="<?php print $classes; ?>">
   <h1 class="page-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
   <div class="content"<?php print $content_attributes; ?>>
     <div class="libraries"><?php print render($content); ?></div>
-    <div class="libraries-opening-hours"><?php if (!empty($opening_hours)) { print $opening_hours; } ?></div>
+    <?php if (!empty($opening_hours)) : ?>
+    <div class="libraries-opening-hours">
+    <?php print $opening_hours;  ?>
+    </div>
+    <?php endif; ?>
   </div>
 </div>
-<?php endif; ?>
-
-<?php if($teaser): ?>
- <h1 class="page-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
- <div><?php if (!empty($opening_hours)) { print $opening_hours; } ?></div>
- <hr />
-<?php endif; ?>
-
+<hr />
