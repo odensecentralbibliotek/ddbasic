@@ -86,6 +86,7 @@
  * @see template_process()
  */
 ?>
+<?php  if ($page) : ?>
 <div class="image-container">
   <?php print render($content['field_ding_news_title_image']); ?>
   <?php print render($content['field_ding_news_list_image']); ?>
@@ -104,10 +105,24 @@
     </p>
   </div>
 </div>
+<hr />
+ <?php endif; ?>
 
-<hr class="grid-clear-both"/>
+ <?php  if ($teaser) : ?>
+
+    <h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+  <div class="grid-row">
+  <div class="lead">
+    <p>
+      <?php print render($content['field_ding_news_lead']); ?>
+    </p>
+  </div>
+</div>
+  <hr />
+ <?php endif; ?>
 
 <div class="content">
+ 
 <?php
   // hide fields we have already rendered
   hide($content['field_ding_news_title_image']);
@@ -124,9 +139,9 @@
   print render($content);
 ?>
 </div>
-
+<?php  if ($page) : ?>
 <hr/>
-
+<?php endif; ?>
 <?php
   // Remove the "Add new comment" link on the teaser page or if the comment
   // form is being displayed on the same page.
@@ -141,7 +156,7 @@
     <?php print $links; ?>
   </div>
 <?php endif; ?>
-
+<?php  if ($page) : ?>
 <?php if ($display_submitted): ?>
   <div class="grid-row">
     <?php print $user_picture; ?>
@@ -163,4 +178,5 @@
       </p>
     </div>
   </div>
+<?php endif; ?>
 <?php endif; ?>
