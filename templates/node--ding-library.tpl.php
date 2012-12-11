@@ -87,6 +87,11 @@
 <div class="<?php print $classes; ?>">
   <h1 class="page-title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h1>
   <div class="content"<?php print $content_attributes; ?>>
+    <?php
+    if (isset($content['field_ding_library_list_image'])) {
+      print render($content['field_ding_library_list_image']);
+    }
+    ?>
     <div class="libraries"><?php print render($content); ?></div>
     <?php if (!empty($opening_hours)) : ?>
     <div class="libraries-opening-hours">
