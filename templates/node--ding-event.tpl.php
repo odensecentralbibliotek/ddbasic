@@ -87,6 +87,7 @@
  * @see template_process()
  */
 ?>
+<?php  if ($page) : ?>
 <div class="image-container">
   <?php print render($content['field_ding_event_title_image']); ?>
   <?php print render($content['field_ding_event_list_image']); ?>
@@ -127,8 +128,40 @@
       </p>
   </div>
 </div>
+<?php endif; ?>
 
-<hr class="grid-clear-both"/>
+
+<?php  if ($teaser) : ?>
+<h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title ?></a></h2>
+  <p>
+    <?php print render($content['field_ding_event_library'][0]); ?>
+    <?php print render($content['field_ding_event_category']); ?>
+  </p>
+  <div class="grid-row">
+    <p>
+      <?php print render($content['field_ding_event_lead'][0]); ?>
+    </p>
+    <?php if ($latto_place2book_tickets): ?>
+      <p><?php print render($content['field_place2book_tickets'][0]); ?><p>
+    <?php endif; ?>
+  </div>
+
+  
+          <i class="icon-calendar"></i> <?php print render($variables['content']['field_ding_event_date'][0]); ?>
+
+          <i class="icon-home"></i> <?php print $ddbasic_event_location; ?>
+
+          <i class="icon-user"></i> <?php print render($content['field_ding_event_target'][0]); ?>
+
+
+
+</div>
+
+<?php endif; ?>
+
+
+
+<hr />
 
 <div class="content">
 <?php
@@ -142,8 +175,8 @@
   hide($content['field_ding_event_date']);
   hide($content['field_ding_event_location']);
   hide($content['field_ding_event_target']);
-  hide($content['field_ding_event_price']);
-
+  hide($content['field_ding_event_price']); 
+  hide($content['field_ding_event_list_image']);
   // Hide fields that will be displayed as panel panes instead
   hide($content['comments']);
 
@@ -154,8 +187,9 @@
 ?>
 </div>
 
+<?php  if ($page) : ?>
 <hr/>
-
+<?php endif; ?>
 <?php
   // Remove the "Add new comment" link on the teaser page or if the comment
   // form is being displayed on the same page.
@@ -171,6 +205,7 @@
   </div>
 <?php endif; ?>
 
+<?php  if ($page) : ?>
 <?php if ($display_submitted): ?>
   <div class="grid-row">
     <?php print $user_picture; ?>
@@ -192,4 +227,5 @@
       </p>
     </div>
   </div>
+<?php endif; ?>
 <?php endif; ?>
