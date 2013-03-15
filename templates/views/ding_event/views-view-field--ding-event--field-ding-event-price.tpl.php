@@ -18,6 +18,14 @@
   * regardless of any changes in the aliasing that might happen if
   * the view is modified.
   */
-$price = (intval($output) < 1) ? t('Free') : intval($output) . ' kr.';
 ?>
+
+<?php if ($price = (intval($output) == 0)): ?>
+  <?php $price = t('Free registration'); ?>
+<?php elseif ($price = (intval($output) == -1)): ?>
+  <?php $price = t('Free'); ?>
+<?php else: ?>
+  <?php $price = intval($output) . ' kr.'; ?>
+<?php endif; ?>
+
 <?php print $price; ?>

@@ -88,6 +88,7 @@
  */
 ?>
 <?php  if ($page) : ?>
+<?php $content['field_ding_event_price'][0]; ?>
 <div class="image-container">
   <?php print render($content['field_ding_event_title_image']); ?>
   <?php print render($content['field_ding_event_list_image']); ?>
@@ -120,10 +121,12 @@
       </p>
       <p>
           <i class="icon-shopping-cart"></i> 
-          <?php if ($content['field_ding_event_price'][0]): ?>
-	          <?php print render($content['field_ding_event_price'][0]); ?>
-	        <?php else: ?>
+          <?php if ($content['field_ding_event_price']['#items'][0]['value'] == -1): ?>
 	          <?php print t('Free'); ?>
+          <?php elseif ($content['field_ding_event_price']['#items'][0]['value'] == 0): ?>
+	          <?php print t('Free registration'); ?>
+	        <?php else: ?>	          
+            <?php print render($content['field_ding_event_price'][0]); ?>
 	        <?php endif; ?>
       </p>
   </div>
