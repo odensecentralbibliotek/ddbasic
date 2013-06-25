@@ -34,7 +34,9 @@ foreach ($fields as $id => $field) {
   if ($id != 'field_ding_event_library' || ($id == 'field_ding_event_library' && empty($fields['field_ding_event_location']->content)) ) {
     print $field->wrapper_prefix;
     if ($id == 'field_ding_event_library' || $id == 'field_ding_event_location') {
+    if (!empty($fields['field_ding_event_library']->content) || !empty($fields['field_ding_event_location']->content)){
       print '<i class="icon-home"></i> ';
+    }      
     }
     if ($id == 'field_ding_event_date_1') {
       print '<i class="icon-time"></i> ';

@@ -155,7 +155,7 @@ function ddbasic_preprocess_node(&$variables, $hook) {
     'news',
     'page',
   );
-  foreach ($tags_fields as $tag_field) {
+  foreach ($tags_fields as $tags_field) {
     // Add ddbasic_ding_xxx_tags  to variables.
     $variables['ddbasic_ding_' . $tags_field . '_tags'] = '';
     if (isset($variables['content']['field_ding_' . $tags_field . '_tags'])) {
