@@ -122,7 +122,7 @@
       print render($content);
     ?>
 
-  <hr />
+ <br /> <hr />
 
   <?php
     // Remove the "Add new comment" link on the teaser page or if the comment

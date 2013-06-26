@@ -140,7 +140,7 @@
 ?>
 </div>
 <?php  if ($page) : ?>
-<hr/>
+<br /><hr/>
 <?php endif; ?>
 <?php
   // Remove the "Add new comment" link on the teaser page or if the comment
