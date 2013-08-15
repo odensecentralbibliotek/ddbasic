@@ -113,9 +113,14 @@
       <p>
           <i class="icon-calendar"></i> <?php print render($variables['content']['field_ding_event_date'][0]); ?>
       </p>
-      <p>
-          <i class="icon-home"></i> <?php print $ddbasic_event_location; ?>
-      </p>
+          <p>
+          <i class="icon-home"></i> 
+          <?php if ($ddbasic_event_location): ?>
+            <?php print $ddbasic_event_location; ?>
+          <?php else: ?>	
+            <?php print t('See event info'); ?>
+          <?php endif; ?>
+        </p>
       <p>
           <i class="icon-user"></i> <?php print render($content['field_ding_event_target'][0]); ?>
       </p>
