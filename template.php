@@ -123,6 +123,40 @@ function ddbasic_preprocess_user_picture(&$variables) {
  *   The name of the template being rendered ("node" in this case.)
  */
 function ddbasic_preprocess_node(&$variables, $hook) {
+  //added open graph meta tags for facebook.
+  $site_name = variable_get('site_name');
+  $og_title = $variables['node']->title . ($site_name ? ' | ' . $site_name : '');
+  if ($variables['type'] == 'ding_page') {
+    $og_description = isset($variables['node']->field_ding_page_lead[LANGUAGE_NONE][0]) ? drupal_substr(check_plain(strip_tags($variables['node']->field_ding_page_lead[LANGUAGE_NONE][0]['safe_value'])), 0, 100) . '..' : '';
+    $og_image = isset($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]) ? url($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
+  }
+  elseif ($variables['type'] == 'ding_news') {
+    $og_description = isset($variables['node']->field_ding_news_lead[LANGUAGE_NONE][0]) ? drupal_substr(check_plain(strip_tags($variables['node']->field_ding_news_lead[LANGUAGE_NONE][0]['safe_value'])), 0, 100) . '..' : '';
+    $og_image = isset($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]) ? url($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
+  }
+  drupal_add_html_head(array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:title',
+      'content' => $og_title,
+    ),
+      ), 'node_' . $variables['node']->nid . '_og_title');
+  drupal_add_html_head(array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:description',
+      'content' => $og_description,
+    ),
+      ), 'node_' . $variables['node']->nid . '_og_description');
+
+  drupal_add_html_head(array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'property' => 'og:image',
+      'content' => $og_image,
+    ),
+      ), 'node_' . $variables['node']->nid . '_og_image');
+
   // Opening hours on library list.
    $hooks = theme_get_registry(FALSE);
   if (isset($hooks['opening_hours_week']) && $variables['type'] == 'ding_library') {
