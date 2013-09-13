@@ -128,11 +128,11 @@ function ddbasic_preprocess_node(&$variables, $hook) {
   $og_title = $variables['node']->title . ($site_name ? ' | ' . $site_name : '');
   if ($variables['type'] == 'ding_page') {
     $og_description = isset($variables['node']->field_ding_page_lead[LANGUAGE_NONE][0]) ? drupal_substr(check_plain(strip_tags($variables['node']->field_ding_page_lead[LANGUAGE_NONE][0]['safe_value'])), 0, 100) . '..' : '';
-    $og_image = isset($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]) ? url($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
+    $og_image = isset($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]) ? file_create_url($variables['node']->field_ding_page_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
   }
   elseif ($variables['type'] == 'ding_news') {
     $og_description = isset($variables['node']->field_ding_news_lead[LANGUAGE_NONE][0]) ? drupal_substr(check_plain(strip_tags($variables['node']->field_ding_news_lead[LANGUAGE_NONE][0]['safe_value'])), 0, 100) . '..' : '';
-    $og_image = isset($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]) ? url($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
+    $og_image = isset($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]) ? file_create_url($variables['node']->field_ding_news_title_image[LANGUAGE_NONE][0]['uri'], array('absolute' => TRUE)) : '';
   }
   drupal_add_html_head(array(
     '#tag' => 'meta',
