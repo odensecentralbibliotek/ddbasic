@@ -87,10 +87,6 @@
  */
 ?>
 <?php  if ($page) : ?>
-<div class="image-container">
-  <?php print render($content['field_ding_news_title_image']); ?>
-  <?php print render($content['field_ding_news_list_image']); ?>
-</div>
 <div class="super-heading">
   <p>
     <?php print render($content['field_ding_news_category']); ?>
@@ -121,8 +117,12 @@
   <hr />
  <?php endif; ?>
 
-<div class="content">
- 
+  <div class="content">
+    <div class="print-links"><?php print render($content['print_links']); ?></div>
+    <div class="image-container">
+    <?php print render($content['field_ding_news_title_image']); ?>
+    <?php print render($content['field_ding_news_list_image']); ?>
+    </div>
 <?php
   // hide fields we have already rendered
   hide($content['field_ding_news_title_image']);
