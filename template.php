@@ -212,13 +212,13 @@ function ddbasic_place2book_ticketsinfo($variables) {
 
   switch ($type) {
     case 'event-over':
-      $output = '<button class="btn btn-warning btn-large">' . t('The event has already taken place') . '</button>';
+      $output = '<button class="btn-warning btn-large">' . t('The event has already taken place') . '</button>';
       break;
     case 'closed-admission':
-      $output = '<button class="btn btn-warning btn-large">' . t('Not open for ticket sale') . '</button>';
+      $output = '<button class="btn-warning btn-large">' . t('Not open for ticket sale') . '</button>';
       break;
     case 'no-tickets-left':
-      $output = '<button class="btn btn-warning btn-large">' . t('Sold out') . '</button>';
+      $output = '<button class="btn-warning btn-large">' . t('Sold out') . '</button>';
       break;
     case 'order-link':
       $output = l(t('Book a ticket'), $url, array('attributes' => array('class' => array('btn', 'btn-primary', 'btn-large'))));
