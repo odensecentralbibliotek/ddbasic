@@ -22,7 +22,7 @@
 
 <?php if (is_null($output)): ?>
   <?php $price = t('Free registration'); ?>
-<?php elseif (intval($output) == -1 || $output === 0): ?>
+<?php elseif (intval($output) == -1 || $output === "0"): ?>
   <?php $price = t('Free'); ?>
 <?php else: ?>
   <?php $price = intval($output) . ' kr.'; ?>

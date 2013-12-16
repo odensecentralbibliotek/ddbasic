@@ -126,7 +126,7 @@
       </p>
       <p>
           <i class="icon-shopping-cart"></i> 
-            <?php if ($content['field_ding_event_price']['#items'][0]['value'] == -1 || $content['field_ding_event_price']['#items'][0]['value'] === 0): ?>
+            <?php if ($content['field_ding_event_price']['#items'][0]['value'] == -1 || $content['field_ding_event_price']['#items'][0]['value'] === "0"): ?>
               <?php print t('Free'); ?>
             <?php elseif (is_null($content['field_ding_event_price']['#items'][0]['value'])) : ?>
 	          <?php print t('Free registration'); ?>
