@@ -87,7 +87,7 @@
  * @see template_process()
  */
 ?>
-<?php  if ($page) : ?>
+<?php  if (!$teaser) : ?>
 <?php $content['field_ding_event_price'][0]; ?>
 <div class="image-container">
   <?php print render($content['field_ding_event_title_image']); ?>

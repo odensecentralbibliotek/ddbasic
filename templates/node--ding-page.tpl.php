@@ -86,7 +86,7 @@
  */
 ?>
 <section class="span7" role="main">
-  <?php  if ($page) : ?>
+  <?php  if (!$teaser) : ?>
   <article>
     <?php print render($content['field_ding_page_titel_image'][0]); ?>
  <hr/>
@@ -138,7 +138,7 @@
       <?php print $links; ?>
     </div>
   <?php endif; ?>
-<?php  if ($page) : ?>
+<?php  if (!$teaser) : ?>
   <?php if ($display_submitted): ?>
     <footer class="row-fluid">
       <?php print $user_picture; ?>

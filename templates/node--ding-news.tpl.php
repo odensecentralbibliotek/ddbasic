@@ -86,7 +86,7 @@
  * @see template_process()
  */
 ?>
-<?php  if ($page) : ?>
+<?php  if (!$teaser) : ?>
 <div class="image-container">
   <?php print render($content['field_ding_news_title_image']); ?>
   <?php print render($content['field_ding_news_list_image']); ?>
@@ -139,7 +139,7 @@
   print render($content);
 ?>
 </div>
-<?php  if ($page) : ?>
+<?php  if (!$teaser) : ?>
 <br /><hr/>
 <?php endif; ?>
 <?php
@@ -156,7 +156,7 @@
     <?php print $links; ?>
   </div>
 <?php endif; ?>
-<?php  if ($page) : ?>
+<?php  if (!$teaser) : ?>
 <?php if ($display_submitted): ?>
   <div class="grid-row">
     <?php print $user_picture; ?>
