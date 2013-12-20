@@ -87,25 +87,24 @@
  */
 ?>
 <?php  if (!$teaser) : ?>
-<div class="image-container">
-  <?php print render($content['field_ding_news_title_image']); ?>
-  <?php print render($content['field_ding_news_list_image']); ?>
-</div>
-<div class="super-heading">
-  <p>
-    <?php print render($content['field_ding_news_category']); ?>
-    <?php print render($content['field_ding_news_library']); ?>
-  </p>
-</div>
 <h2 class="heading"><?php print $title; ?></h2>
-  <div class="grid-row">
-  <div class="lead">
-    <p>
+    <div class="grid-row">
+    <div class="image-container">
+      <?php print render($content['field_ding_news_title_image']); ?>
+      <?php print render($content['field_ding_news_list_image']); ?>
+    </div>
+      <div class="lead">
+          <div class="super-heading">
+            <p>
+              <?php print render($content['field_ding_news_category']); ?>
+              <?php print render($content['field_ding_news_library']); ?>
+            </p>
+          </div>
+        <p>
       <?php print render($content['field_ding_news_lead'][0]); ?>
     </p>
   </div>
-</div>
-<hr />
+    </div>
  <?php endif; ?>
 
  <?php  if ($teaser) : ?>
@@ -120,9 +119,9 @@
 </div>
   <hr />
  <?php endif; ?>
-
-<div class="content">
- 
+  <hr />
+  <div class="content">
+    <div class="print-links"><?php print render($content['print_links']); ?></div>
 <?php
   // hide fields we have already rendered
   hide($content['field_ding_news_title_image']);
