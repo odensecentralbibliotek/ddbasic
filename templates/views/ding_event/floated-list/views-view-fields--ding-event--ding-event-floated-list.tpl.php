@@ -42,5 +42,4 @@ foreach ($fields as $id => $field) {
   if($id == 'field_ding_event_price') {
     print "</div>";
   }
-  }
-print '<input type="hidden" class="place2book-ticketinfo" value="' . $row->nid . '"/>';
+}
