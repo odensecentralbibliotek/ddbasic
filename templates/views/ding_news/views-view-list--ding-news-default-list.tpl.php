@@ -9,8 +9,8 @@
  * @ingroup views_templates
  */
 ?>
+<?php print '<br /><input id="search_input" placeholder="' . t('Type to filter') .'" /><br /><br />'; ?>
 <?php print $wrapper_prefix; ?>
-<?php print '<br /><input id="search_input" class="floated" placeholder="' . t('Type to filter') .'" /><br /><br />'; ?>
   <?php if (!empty($title)) : ?>
     <h3><?php print $title; ?></h3>
   <?php endif; ?>
