@@ -7,8 +7,8 @@
  * - $options['type'] will either be ul or ol.
  * @ingroup views_templates
  */
-print '<input id="search_input" class="floated" placeholder="' . t(Type) .'" />';
 print $wrapper_prefix;
+print '<br /><input id="search_input" class="floated" placeholder="' . t('Type to filter') .'" /><br /><br />';
   if (!empty($title)):
     print '<h3>' . $title . '</h3>';
   endif;
