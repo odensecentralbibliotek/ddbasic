@@ -8,8 +8,8 @@
  * @ingroup views_templates
  */
 print $wrapper_prefix;
-print '<br /><input id="search_input" class="floated" placeholder="' . t('Type to filter') .'" /><br /><br />';
-  if (!empty($title)):
+print '<div id="search_input_wrapper"> <br /><input id="search_input" class="floated" placeholder="' . t('Type to filter') .'" /><br /><br /></div>';
+   if (!empty($title)):
     print '<h3>' . $title . '</h3>';
   endif;
   print $list_type_prefix;
