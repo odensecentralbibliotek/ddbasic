@@ -206,19 +206,26 @@ function ddbasic_preprocess_node(&$variables, $hook) {
  *
  */
 function ddbasic_place2book_ticketsinfo($variables) {
-  $output = '';
+      $output = '';
+  $place2book_id = $variables['place2book_id'];
   $url = $variables['url'];
   $type = $variables['type'];
 
   switch ($type) {
     case 'event-over':
-      $output = '<button class="btn-warning btn-large">' . t('The event has already taken place') . '</button>';
+      $output = '<div class="btn-warning btn-large">' . t('The event has already taken place') . '</div>';
       break;
     case 'closed-admission':
-      $output = '<button class="btn-warning btn-large">' . t('Not open for ticket sale') . '</button>';
+      $output = '<div class="btn-warning btn-large">' . t('The event is closed for admission') . '</div>';
+      break;
+    case 'sale-not-started':
+      $output = '<div class="btn-warning btn-large">' . t('Ticket sale has not yet started for this event') . '</div>';
+      break;
+    case 'sale-not-started':
+      $output = '<div class="btn-warning btn-large">' . t('Ticket sale has not yet started for this event') . '</div>';
       break;
     case 'no-tickets-left':
-      $output = '<button class="btn-warning btn-large">' . t('Sold out') . '</button>';
+      $output = '<div class="btn-warning btn-large">' . t('Sold out') . '</div>';
       break;
     case 'order-link':
       $output = l(t('Book a ticket'), $url, array('attributes' => array('class' => array('btn', 'btn-primary', 'btn-large'))));
