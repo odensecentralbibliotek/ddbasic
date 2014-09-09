@@ -216,7 +216,7 @@ function ddbasic_place2book_ticketsinfo($variables) {
       $output = '<div class="btn-warning btn-large">' . t('The event has already taken place') . '</div>';
       break;
     case 'closed-admission':
-      $output = '<div class="btn-warning btn-large">' . t('The event is closed for admission') . '</div>';
+      $output = '<div class="btn-warning btn-large">' . t('The event is closed for admission_s') . '</div>';
       break;
     case 'sale-not-started':
       $output = '<div class="btn-warning btn-large">' . t('Ticket sale has not yet started for this event') . '</div>';
@@ -228,7 +228,7 @@ function ddbasic_place2book_ticketsinfo($variables) {
       $output = '<div class="btn-warning btn-large">' . t('Sold out') . '</div>';
       break;
     case 'order-link':
-      $output = l(t('Book a ticket'), $url, array('attributes' => array('class' => array('btn', 'btn-primary', 'btn-large'))));
+      $output = l(t('Book a ticket'), $url, array('attributes' => array('class' => array('btn', 'btn-primary', 'btn-large') , 'target' => '_blank')));
       break;
     default:
       $output = '';
