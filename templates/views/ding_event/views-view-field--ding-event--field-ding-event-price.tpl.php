@@ -19,8 +19,9 @@
   * the view is modified.
   */
 ?>
-
-<?php if (!isset($output)): ?>
+<?php if ($row->_field_data['nid']['entity']->field_custom_price['und'][0]['value'] == 1): ?>
+<?php print $row->_field_data['nid']['entity']->field_valgfrit_pris['und'][0]['value']; ?>
+<?php elseif (!isset($output)): ?>
   <?php $price = t('Free registration'); ?>
 <?php elseif (intval($output) == -1 || intval($output) === 0): ?>
   <?php $price = t('Free'); ?>

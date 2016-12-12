@@ -88,7 +88,9 @@
  */
 ?>
 <?php  if (!$teaser) : ?>
+<?php if(isset($content['field_ding_event_price'][0])) : ?>
 <?php $content['field_ding_event_price'][0]; ?>
+<?php endif; ?>
 <div class="image-container">
   <?php print render($content['field_ding_event_title_image']); ?>
   <?php print render($content['field_ding_event_list_image']); ?>
@@ -126,7 +128,10 @@
       </p>
       <p>
           <i class="icon-shopping-cart"></i> 
-            <?php if ($content['field_ding_event_price']['#items'][0]['value'] == -1 || $content['field_ding_event_price']['#items'][0]['value'] === "0"): ?>
+
+           <?php if (!empty($content['field_custom_price']['#items'][0]['value']) == 'checked') : ?>
+              <?php print render($content['field_valgfrit_pris'][0]); ?>
+            <?php elseif ($content['field_ding_event_price']['#items'][0]['value'] == -1 || $content['field_ding_event_price']['#items'][0]['value'] === "0"): ?>
               <?php print t('Free'); ?>
             <?php elseif (is_null($content['field_ding_event_price']['#items'][0]['value'])) : ?>
 	          <?php print t('Free registration'); ?>
@@ -184,6 +189,8 @@
   hide($content['field_ding_event_location']);
   hide($content['field_ding_event_target']);
   hide($content['field_ding_event_price']); 
+  hide($content['field_valgfrit_pris']); 
+  hide($content['field_custom_price']); 
   hide($content['field_ding_event_list_image']);
   // Hide fields that will be displayed as panel panes instead
   hide($content['comments']);
