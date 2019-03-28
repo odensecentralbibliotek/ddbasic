@@ -113,9 +113,19 @@
   </div>
   <div class="grid-8-right">
       <p>
-          <i class="icon-calendar"></i> <?php print render($variables['content']['field_ding_event_date'][0]); ?>
-      </p>
-          <p>
+              <?php
+              if (isset($node->field_event_hold) && sizeof($node->field_event_hold) != 0) {
+                  $variables['content']['field_ding_event_date'][0]['#markup'] = '<span>Flere tidspunkter</span>';
+                  print render($variables['content']['field_ding_event_date'][0]);
+              }
+              else {
+                  ?>
+              <i class="icon-calendar"></i> <?php
+                      print render($variables['content']['field_ding_event_date'][0]);
+              }
+              ?>
+              </p>
+              <p>
           <i class="icon-home"></i> 
           <?php if ($ddbasic_event_location): ?>
             <?php print $ddbasic_event_location; ?>
